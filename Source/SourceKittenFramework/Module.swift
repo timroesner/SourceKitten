@@ -127,7 +127,7 @@ public struct Module {
             let file = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("xcodebuild-\(NSUUID().uuidString).log")
             _ = try? results.data.write(to: file)
             fputs("Saved `xcodebuild` log file: \(file.path)\n", stderr)
-            fputs("Error log: \(results)", stderr)
+            fputs("Error log: \(results.string ?? "nil")", stderr)
             return nil
         }
         if let output = results.string,
